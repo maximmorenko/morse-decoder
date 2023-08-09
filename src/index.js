@@ -37,8 +37,21 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-function decode(expr) {
-    // write your solution here
+function decode(morseCode) {
+    return morseCode
+    .split('**********')
+    .map(i => i.match(/.{10}/g))
+    .map(i=>i.map(el=>el
+        .match(/.{2}/g)
+        .filter(ch => ch !== '00')
+        .map(k=>{
+            if(k==='10') return '.';
+            else return '-';
+            }).join``)
+        .map(l=> l = MORSE_TABLE[l])
+        .join``
+        )
+    .join` `;
 }
 
 module.exports = {
